@@ -6,7 +6,7 @@ package com.runtime.good.gof.principle;
  * @date 2020/6/19 22:18
  * @Description 迪米特法则原则
  * --- 如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用。其目的是降低类之间的耦合度，提高模块的相对独立性
- * --- 朋友指: (成员变量,传参,返回值)
+ * --- 朋友指: (成员变量,传参,返回值) --
  */
 public class 迪米特法则原则 {
     public static void main(String[] args) {
