@@ -9,7 +9,7 @@ package com.runtime.good.gof.principle;
  *      --- 要面向接口编程，不要面向实现编程
  *      --- 使用接口或者抽象类的目的是制定好规范和契约，而不去涉及任何具体的操作，把展现细节的任务交给它们的实现类去完成。
  */
-public class Yi_lai_dao_zhi {
+public class 依赖倒置原则 {
     public static void main(String[] args) {
 
         Customer wang = new Customer();

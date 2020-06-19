@@ -5,9 +5,9 @@ package com.runtime.good.gof.principle;
  * @version 1.0
  * @date 2020/6/19 22:25
  * @Description 接口隔离原则
- * --- 程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法。
+ *  --- 程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法。
  */
-public class Jie_kou_ge_li {
+public class 接口隔离原则 {
     public static void main(String[] args) {
         InputModule input = StuScoreList.getInputModule();
         CountModule count = StuScoreList.getCountModule();
