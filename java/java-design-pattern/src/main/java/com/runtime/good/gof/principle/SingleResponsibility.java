@@ -7,4 +7,10 @@ package com.runtime.good.gof.principle;
  * @Description 单一职责原则规定一个类应该有且仅有一个引起它变化的原因，否则类应该被拆分
  */
 public class SingleResponsibility {
+    public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);
+
+
+
+    }
 }
