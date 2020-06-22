@@ -24,8 +24,6 @@
         </plugins>
 
     </build>
-    <modules>
-        <module>java</module>
-    </modules>
+
 
 </project>
