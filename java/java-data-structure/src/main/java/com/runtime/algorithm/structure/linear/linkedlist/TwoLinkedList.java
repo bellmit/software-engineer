@@ -81,6 +81,7 @@ public class TwoLinkedList {
             temp = temp.next;
         }
 
+
         if (flag) {
             temp.pre.next = heroNode;
             heroNode.next = temp;
