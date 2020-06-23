@@ -35,6 +35,10 @@ public class SingleLinkedListClientT1 {
 
         //修改
         singleLinkedList.update(new HeroNode(22,"小刘","年兽"));
+
+        //查询
         singleLinkedList.list();
+
+
     }
 }

@@ -17,8 +17,7 @@ public class SingleLinkedListT1 {
         return this.heroNode;
     }
 
-    // TODO 1 : 新增
-    // 1. 添加节点到单向链表  1. 找到当前链表的最后节点  2. 将最后这个节点的next 指向 新的节点
+    // TODO 1 : 新增 1. 添加节点到单向链表  1. 找到当前链表的最后节点  2. 将最后这个节点的next 指向 新的节点
     public void add(HeroNode heroNode) {
 
         //因为head节点不能动，因此我们需要一个辅助遍历 temp
@@ -67,8 +66,7 @@ public class SingleLinkedListT1 {
         }
     }
 
-    // TODO 2 : 查询
-    // 显示链表[遍历]
+    // TODO 2 : 查询 显示链表[遍历]
     public void list() {
         if (this.heroNode.next == null) {
             System.err.println("链表为空");
@@ -136,7 +134,6 @@ public class SingleLinkedListT1 {
             System.out.printf("没有找到 编号 %d 的节点，不能修改\n",heroNode.no);
             System.err.println("没有");
         }
-
 
     }
 
