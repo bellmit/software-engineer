@@ -4,7 +4,7 @@ package com.runtime.algorithm.structure.InterviewQuestions.linkedList;
  * @author Apache-x | A You Ok
  * @version 1.0
  * @date 2020/6/24 8:29
- * @Description
+ * @Description 单链表实现栈操作 先进后出
  */
 public class LinkedListStack {
     class Node {// 定义节点
@@ -103,3 +103,4 @@ public class LinkedListStack {
         System.out.println("栈顶元素为:" + stack.peek());
     }
 }
+
