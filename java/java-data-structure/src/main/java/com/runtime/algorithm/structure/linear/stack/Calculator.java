@@ -177,7 +177,7 @@ class ArrayStack2 {
     }
 
     //判断是不是一个运算符
-    public boolean isOper(char val) {
+    public boolean isOper(int val) {
         return val == '+' || val == '-' || val == '*' || val == '/';
     }
 
