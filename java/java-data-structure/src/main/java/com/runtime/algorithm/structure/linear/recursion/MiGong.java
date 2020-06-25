@@ -78,6 +78,8 @@ public class MiGong {
 //                } else if (setWay(arr, i + 1, j)) {
 //                    return true;
 
+
+
                 if(setWay(arr, i-1, j)) {//向上走
                     return true;
                 } else if (setWay(arr, i, j+1)) { //向右走
