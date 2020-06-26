@@ -1,8 +1,5 @@
 package com.runtime.algorithm.structure.sort;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
@@ -14,7 +11,7 @@ import java.util.Arrays;
  */
 public class SortSummaryS {
 
-    // todo 冒泡排序 时间复杂度 为 O(n2)
+    //todo 冒泡排序 时间复杂度 为 O(n2)
     //todo 相邻两个数字 做大小运算 并左右替换
     public static void bubbleSort(int[] arr) {
 
@@ -66,6 +63,27 @@ public class SortSummaryS {
 
     }
 
+
+    //todo 时间复杂度 O(n2)
+    public static void insertSort(int[] arr) {
+
+
+        for (int i = 1; i < arr.length; i++) {
+            int insertVal = arr[i];
+            int insertIndex = (i - 1);
+
+            while (insertIndex >= 0 && insertVal < arr[insertIndex]) { // insertIndex >= 0 && arr[1] < arr[0]
+                arr[insertIndex + 1] = arr[insertIndex];
+                insertIndex--;
+            }
+            arr[insertIndex + 1] = insertVal;
+        }
+
+        System.out.println(Arrays.toString(arr));
+
+
+    }
+
     public static void main(String[] args) {
 
         int[] arr = new int[80000];
@@ -77,28 +95,13 @@ public class SortSummaryS {
         System.out.println("开始时间: -> " + format.format(System.currentTimeMillis()));
         //bubbleSort(arr); //冒泡排序
         //selectSort(arr); //选择排序
+        int[] arr1 = {1, 3, 2, 215, 3125, 325325, 10};
+        insertSort(arr1);
+
         System.out.printf("结束时间: -> " + format.format(System.currentTimeMillis()));
 
     }
 
-
-    /**
-     *  for (int i = 0; i < arr.length - 1; i++) {
-     *             int minIndex = i;
-     *             int min = arr[i];
-     *             for (int j = i + 1; j < arr.length; j++) {
-     *                 if (min > arr[j]) { //说明假定的最小值，并不是最小
-     *                     min = arr[j]; //重置min
-     *                     minIndex = j; //重置minIndex
-     *                 }
-     *             }
-     *
-     *             if (minIndex != 0) {
-     *                 arr[minIndex] = arr[i];
-     *                 arr[i] = min;
-     *             }
-     *         }
-     */
 
 }
 
