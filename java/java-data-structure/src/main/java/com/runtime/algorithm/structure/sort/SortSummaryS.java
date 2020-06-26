@@ -181,8 +181,6 @@ public class SortSummaryS {
                 le += 1;
             }
 
-            System.out.println(Arrays.toString(arr));
-
         }
         // 如果 le == ri 则需要 (le ++) (ri --)
         if (le == ri) {
@@ -196,6 +194,62 @@ public class SortSummaryS {
         }
         if (right > le) {
             quickSort(arr, le, right); //从le 到 末尾
+        }
+
+
+    }
+
+    //分+合方法
+    public static void mergeSort(int[] arr, int left, int right, int[] temp) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+
+            mergeSort(arr, left, mid, temp);
+            mergeSort(arr, mid + 1, right, temp);
+
+            merge(arr, left, mid, right, temp);
+        }
+
+    }
+
+    public static void merge(int[] arr, int left, int mid, int right, int[] temp) {
+        int i = left;
+        int j = mid + 1;
+        int t = 0;
+
+        //先把左右两边(有序)的数据按照规则填充到temp数组
+        while (i <= mid && j <= right) {
+            if (arr[i] <= arr[j]) {
+                temp[t] = arr[i];
+                t += 1;
+                i += 1;
+            } else {
+                temp[t] = arr[j];
+                t += 1;
+                j += 1;
+            }
+        }
+
+        //把剩余的数据的一边的数据依次全部填充到temp中
+        while (i <= mid) {
+            temp[t] = arr[i];
+            t += 1;
+            i += 1;
+        }
+
+        while (j <= right) {
+            temp[t] = arr[j];
+            t += 1;
+            j += 1;
+        }
+
+        //将temp数组的元素拷贝到arr
+        t = 0;
+        int tempLeft = left;
+        while (tempLeft <= right) {
+            arr[tempLeft] = temp[t];
+            t += 1;
+            tempLeft += 1;
         }
 
 
@@ -216,13 +270,19 @@ public class SortSummaryS {
         //insertSort(arr); //插入排序
         //shellSort(arr); //希尔排序交换法
         //shellSortYd(arr); //希尔排序移动法
+        //quickSort(arr, 0, arr.length - 1); // 快速排序
 
 
         int[] arr1 = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0, 2};
         //System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr1));
         System.out.println();
-        quickSort(arr1, 0, arr1.length - 1);
+
+
+        int[] temp = new int[arr1.length];
+        mergeSort(arr1, 0, arr1.length - 1, temp);
+        System.out.println(Arrays.toString(arr1));
+        //quickSort(arr, 0, arr1.length - 1);
 
         System.out.printf("结束时间: -> " + format.format(System.currentTimeMillis()));
 
