@@ -86,8 +86,8 @@ public class SortSummaryS {
     }
 
 
-    //todo
-    //todo
+    //todo 时间复杂度 O(n 1.3)
+    //todo 思想 : 按下标增量分组,组内使用插入排序,直到增量减至1
     public static void shellSort(int[] arr) {
         //[8, 9, 1, 7, 2,  3, 5, 4, 6, 0]
         //[3, 5, 1, 6, 0,  8, 9, 4, 7, 2]
@@ -113,7 +113,91 @@ public class SortSummaryS {
             }
         }
 
-         System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr));
+
+    }
+
+
+    //todo 时间复杂度 O(n 1.3)
+    //todo
+    public static void shellSortYd(int[] arr) {
+        int temp = 0;
+        for (int log = arr.length / 2; log > 0; log /= 2) { //5 2 1
+
+            for (int i = log; i < arr.length; i++) { //5 6 7 8 9
+                int j = i; // 5 6 7 8 9
+                temp = arr[j]; // arr[5]
+
+                if (arr[j] < arr[j - log]) { // arr[5] < arr[0] arr[6] < arr[1] arr[7] < arr[2]
+                    while (j - log >= 0 && temp < arr[j - log]) { // 3 2 1 arr[3] arr[2] arr[1]
+                        arr[j] = arr[j - log];
+                        j -= log;
+                    }
+                    arr[j] = temp;
+                }
+            }
+
+            // System.out.println(Arrays.toString(arr));
+        }
+
+
+    }
+
+
+    //todo 时间复杂度 O(n log2 n)
+    //todo 思想 : 冲数组中定义出一个中间值 判断左右值 并替换位置 (递归方法 直到结束)
+    public static void quickSort(int arr[], int left, int right) {
+        //todo 定义两个值 分别为 左下标 与 右下标
+        int le = left;
+        int ri = right;
+        int temp = 0;
+        //todo 定义中间值
+        int pivot = arr[(left + right) / 2];
+
+        while (le < ri) {
+            // 左边值 大于 pivot 则停止
+            while (arr[le] < pivot) {
+                le += 1;
+            }
+            // 右边值 小于 pivot 则停止
+            while (arr[ri] > pivot) {
+                ri -= 1;
+            }
+            // 左边 与 右边 排列完毕 (小于) | (大于)
+            if (le >= ri) {
+                break;
+            }
+            // 交换位置
+            temp = arr[ri];
+            arr[ri] = arr[le];
+            arr[le] = temp;
+
+            // if  arr[le] == pivot 相等 ri--
+            if (arr[le] == pivot) {
+                ri -= 1;
+            }
+            // if  arr[ri] == pivot 相等 le++
+            if (arr[ri] == pivot) {
+                le += 1;
+            }
+
+            System.out.println(Arrays.toString(arr));
+
+        }
+        // 如果 le == ri 则需要 (le ++) (ri --)
+        if (le == ri) {
+            le += 1;
+            ri -= 1;
+        }
+
+        //开始递归
+        if (left < ri) {
+            quickSort(arr, left, ri); //从 头 到 ri次
+        }
+        if (right > le) {
+            quickSort(arr, le, right); //从le 到 末尾
+        }
+
 
     }
 
@@ -130,8 +214,15 @@ public class SortSummaryS {
         //bubbleSort(arr); //冒泡排序
         //selectSort(arr); //选择排序
         //insertSort(arr); //插入排序
-        int[] arr1 = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
-        shellSort(arr1);
+        //shellSort(arr); //希尔排序交换法
+        //shellSortYd(arr); //希尔排序移动法
+
+
+        int[] arr1 = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0, 2};
+        //System.out.println(Arrays.toString(arr1));
+        System.out.println(Arrays.toString(arr1));
+        System.out.println();
+        quickSort(arr1, 0, arr1.length - 1);
 
         System.out.printf("结束时间: -> " + format.format(System.currentTimeMillis()));
 
