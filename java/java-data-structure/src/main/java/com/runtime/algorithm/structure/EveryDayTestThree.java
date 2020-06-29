@@ -1,5 +1,6 @@
 package com.runtime.algorithm.structure;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -28,7 +29,17 @@ public class EveryDayTestThree {
         //晚上
         System.out.println(ALL[RANDOM.nextInt(ALL.length - 1)]);
 
-
     }
 
+}
+
+
+class Tes {
+    public static void main(String[] args) {
+        // 从数组中找出最值 放在队列起始位置
+        int[] arr = {1, 2, 3, 1, 2134, 2, 34, 1234132, 4, 132, 432, 41324};
+
+
+
+    }
 }
