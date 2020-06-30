@@ -46,9 +46,18 @@ public class BinaryTreeDemo {
 //        tree.infixOrder();
 
         //后序遍历
-        System.out.println("后序遍历"); // 25431
-        tree.postOrder();
+//        System.out.println("后序遍历"); // 25431
+//        tree.postOrder();
+
+
+        System.out.println("前序遍历 前");
+        tree.preOrder();
+        tree.delHer(1);
+        //tree.delher(1);
+        System.out.println("前序遍历 后");
+        tree.preOrder();
     }
+
 }
 
 //定义二叉树
@@ -96,7 +105,6 @@ class BinaryTree {
         }
     }
 
-
     //todo 中序遍历
     public HeroNode infixOrderSearch(int no) {
         if (root != null) {
@@ -117,6 +125,35 @@ class BinaryTree {
         }
     }
 
+    //todo delher 删除节点
+    public void delher(int no) {
+        if (root != null) {
+            if (root.getNo() == no) {
+                root = null;
+            } else {
+                root.delher(no);
+            }
+        } else {
+            System.err.println("空树 不能删除");
+        }
+    }
+
+    public void delHer(int no) {
+        if (root != null) {
+            if (root.getNo() == no) {
+                HeroNode temp = null;
+                if (root.getLeft() != null && root.getRight() != null) {
+                    temp = root.getRight();
+                    root = root.getLeft();
+                    root.setRight(temp);
+                }
+            } else {
+                root.delHer(no);
+            }
+        } else {
+            System.err.println("链表为空");
+        }
+    }
 }
 
 //先创建 HoroNode 节点
@@ -280,4 +317,79 @@ class HeroNode {
         return heroNode;
     }
 
+
+    //todo 删除节点
+    public void delher(int no) {
+        // todo 1  如果当前节点的左节点不为空 |　并且左节点就是要删除的节点 那么直接置为空
+        if (this.left != null && this.left.no == no) {
+            this.left = null;
+            return;
+        }
+        //todo 2 如果当前节点的右节点不为空 | 并且右节点就是要删除的节点 那么直接置为空
+        if (this.right != null && this.right.no == no) {
+            this.right = null;
+            return;
+        }
+        // 左递归删除
+        if (this.left != null) {
+            this.left.delher(no);
+        }
+        // 右递归删除
+        if (this.right != null) {
+            this.right.delher(no);
+        }
+    }
+
+    //todo 安利给
+    public void delHer(int no) {
+        if (this.left != null && this.left.no == no) {
+            //当前节点 有两个节点
+            if (this.left.left != null && this.left.right != null) {
+                this.left = this.left.left;
+                return;
+            }
+            //当前节点 只有左节点 后者只有右节点
+            else if (this.left.left != null) {
+                this.left = this.left.left;
+                return;
+            } else if (this.left.right != null) {
+                this.left = this.left.right;
+                return;
+            } else {
+                this.right = null;
+                return;
+            }
+        }
+
+        //**********************************************
+        if (this.right != null && this.right.no == no) {
+            //当前节点 有两个节点
+            if (this.right.left != null && this.right.right != null) {
+                this.right = this.right.left;
+                return;
+            }
+            //当前节点 只有左节点 后者只有右节点
+            else if (this.right.left != null) {
+                this.right = this.right.left;
+                return;
+            } else if (this.right.right != null) {
+                this.right = this.right.right;
+                return;
+            } else {
+                this.right = null;
+                return;
+            }
+        }
+
+        //***************************************
+        // 左递归删除
+        if (this.left != null) {
+            this.left.delHer(no);
+        }
+        // 右递归删除
+        if (this.right != null) {
+            this.right.delHer(no);
+        }
+
+    }
 }
