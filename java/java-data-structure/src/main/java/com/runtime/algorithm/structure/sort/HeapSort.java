@@ -66,5 +66,6 @@ public class HeapSort {
         arr[i] = temp;//将temp值放到调整后的位置
     }
 
-    // 测试 在
+    // 测试 在  ALLSortTestMain 方法中
+
 }
