@@ -23,7 +23,7 @@ public class AllSortTestMain {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         System.out.println("开始时间: -> " + format.format(System.currentTimeMillis()));
 
-        HeapSortMethod(arr); // 堆排序
+        //HeapSortMethod(arr); // 堆排序
 
 
         //***** 小数据级
@@ -31,7 +31,7 @@ public class AllSortTestMain {
         System.out.println(Arrays.toString(arr2));
         System.out.println();
 
-        //HeapSortMethod(arr2);  //堆排序
+        HeapSortMethod(arr2);  //堆排序
 
 
         System.out.printf("结束时间: -> " + format.format(System.currentTimeMillis()));
