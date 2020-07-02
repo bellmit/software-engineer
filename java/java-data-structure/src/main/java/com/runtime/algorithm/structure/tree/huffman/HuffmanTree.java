@@ -1,4 +1,4 @@
-package com.runtime.algorithm.structure.tree;
+package com.runtime.algorithm.structure.tree.huffman;
 
 import java.util.ArrayList;
 import java.util.List;

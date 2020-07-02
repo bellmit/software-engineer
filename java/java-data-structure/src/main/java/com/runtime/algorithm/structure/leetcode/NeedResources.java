@@ -1,5 +1,8 @@
-package com.runtime.algorithm.structure.leetcode.day;
+package com.runtime.algorithm.structure.leetcode;
 
+
+import com.runtime.algorithm.structure.leetcode.zero_hundred.ListNode;
+import com.runtime.algorithm.structure.leetcode.zero_hundred.OneTwoTwenty;
 
 /**
  * @author Apache-x | A You Ok

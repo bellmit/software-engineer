@@ -1,8 +1,7 @@
-package com.runtime.algorithm.structure.leetcode.day;
+package com.runtime.algorithm.structure.leetcode.zero_hundred;
+
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Apache-x | A You Ok

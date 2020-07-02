@@ -1,4 +1,4 @@
-package com.runtime.algorithm.structure.leetcode.day;
+package com.runtime.algorithm.structure.leetcode.zero_hundred;
 
 /**
  * @author Apache-x | A You Ok
@@ -7,8 +7,8 @@ package com.runtime.algorithm.structure.leetcode.day;
  * @Description
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     public ListNode(int i) {
         this.val = i;

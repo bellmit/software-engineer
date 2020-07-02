@@ -1,5 +1,7 @@
-package com.runtime.algorithm.structure.leetcode.day;
+package com.runtime.algorithm.structure.leetcode;
 
+
+import com.runtime.algorithm.structure.leetcode.zero_hundred.OneTwoTwenty;
 
 import java.util.Arrays;
 
