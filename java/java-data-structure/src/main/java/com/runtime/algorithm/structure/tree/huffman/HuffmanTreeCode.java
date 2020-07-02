@@ -98,7 +98,8 @@ public class HuffmanTreeCode {
 
 
     //编写方法，将一个文件进行压缩
-
+//00000000000000000000000000000000000000
+  //  00000000000
     /**
      * @param srcFile 你传入的希望压缩的文件的全路径
      * @param dstFile 我们压缩后将压缩文件放到哪个目录
@@ -153,7 +154,7 @@ public class HuffmanTreeCode {
     }
 
 
-    // todo 将 原始字符串对应的字节数组 转换成 和府办编码处理后的字节数组
+    // todo 将 原始字符串对应的字节数组 转换成 压缩后编码处理的字节数组
     private static byte[] huffmanZip(byte[] contentBytes) {
         //todo 返回数组二叉树 需要构建
         List<NodeCode> nodes = getNodes(contentBytes);

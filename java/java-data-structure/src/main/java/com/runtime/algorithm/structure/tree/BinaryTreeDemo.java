@@ -50,12 +50,16 @@ public class BinaryTreeDemo {
 //        tree.postOrder();
 
 
-        System.out.println("前序遍历 前");
+  /*      System.out.println("前序遍历 前");
         tree.preOrder();
         tree.delHer(1);
         //tree.delher(1);
         System.out.println("前序遍历 后");
-        tree.preOrder();
+        */
+
+        System.out.println("22323" + tree.preOrderSearch(4));
+
+
     }
 
 }
@@ -100,7 +104,7 @@ class BinaryTree {
         if (root != null) {
             return root.preOrderSearch(no);
         } else {
-            System.err.println("链表为空");
+            System.err.println("二叉树为空");
             return null;
         }
     }
@@ -122,6 +126,13 @@ class BinaryTree {
         } else {
             System.err.println("链表为空");
             return null;
+        }
+    }
+
+    public static void getName(HeroNode root) {
+        System.out.println("-----");
+        if (root.getLeft() != null) {
+
         }
     }
 
@@ -245,7 +256,7 @@ class HeroNode {
         // 先判断当前节点是不是
         System.out.println(this);
 
-        if (this.no == no) {
+        if (this.no == 4) {
             return this;
         }
         HeroNode heroNode = null;
@@ -390,6 +401,20 @@ class HeroNode {
         if (this.right != null) {
             this.right.delHer(no);
         }
+    }
 
+    public void se(HeroNode node) {
+        if (node != null) {
+            if (this.getNo() == 4) {
+                System.out.println(this);
+            }
+            if (this.getLeft() != null) {
+                this.left.se(this);
+            }
+            if (this.getRight() != null) {
+                this.right.se(this);
+            }
+
+        }
     }
 }
