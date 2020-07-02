@@ -12,22 +12,9 @@ import java.util.Map;
  */
 public class OneTwoTwenty {
 
-    //
-    // 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
-    //
-    //
-    //
-    // 示例:
-    //
-    // 给定 nums = [2, 7, 11, 15], target = 9
-    //
-    //因为 nums[0] + nums[1] = 2 + 7 = 9
-    //所以返回 [0, 1]
-    //
-    // Related Topics 数组 哈希表
-
     // todo 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标
     public int[] twoSum(int[] nums, int target) {
+
 
         int[] indexArr = new int[2];
         //todo method 1 | 将缺值存入到HashMap  后序调用 containsKey 方法取出
@@ -72,4 +59,28 @@ public class OneTwoTwenty {
 
         return indexArr;
     }
+
+
+    // todo 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummyHead = new ListNode(0);
+        ListNode p = l1, q = l2, curr = dummyHead;
+        int carry = 0;
+        while (p != null || q != null || carry != 0) {
+            int x = (p != null) ? p.val : 0;
+            int y = (q != null) ? q.val : 0;
+            int sum = carry + x + y;
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+            if (p != null) p = p.next;
+            if (q != null) q = q.next;
+        }
+        if (carry > 0) {
+            curr.next = new ListNode(carry);
+        }
+        return dummyHead.next;
+    }
+
+
 }
