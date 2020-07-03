@@ -121,9 +121,9 @@ public class OneTwoTwenty {
         int start = 0;
         for (int i = 0; i < n; i++) {
             int index = s.charAt(i);
-            System.out.println("start before ->" + start);
+            //System.out.println("start before ->" + start);
             start = Math.max(start, last[index] + 1);
-            System.out.println("start after ->" + start);
+            //System.out.println("start after ->" + start);
             //System.out.println("last[index] + 1 -> " +last[index] + 1);
             res = Math.max(res, i - start + 1);
             // System.out.println("i - start + 1 -> " + (i - start + 1));

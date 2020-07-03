@@ -8,7 +8,7 @@ package com.runtime.algorithm.structure.tree.binarysort;
  */
 public class BinarySortTree {
     public static void main(String[] args) {
-        int[] arr = {7, 3, 10, 12, 5, 1, 9, 2};
+        int[] arr = {7, 3, 10, 12, 5, 1, 9};
         BinarySortTreeSets treeSets = new BinarySortTreeSets();
         for (int i = 0; i < arr.length; i++) {
             treeSets.add(new Node(arr[i]));
@@ -16,10 +16,18 @@ public class BinarySortTree {
         }
         treeSets.infixOrder();
 
-        treeSets.delNode(0);
+       /* treeSets.delNode(7);
+        treeSets.delNode(3);
+        treeSets.delNode(5);
+        treeSets.delNode(10);
+        treeSets.delNode(1);
+        treeSets.delNode(12);
+        treeSets.delNode(9);*/
+
 
         System.out.println();
         treeSets.infixOrder();
+
     }
 }
 
@@ -27,10 +35,6 @@ public class BinarySortTree {
 //创建二叉排序树
 class BinarySortTreeSets {
     private Node root;
-
-    public Node getRoot() {
-        return root;
-    }
 
     //todo  查找要删除的节点
     public Node search(int value) {
@@ -50,6 +54,23 @@ class BinarySortTreeSets {
         }
     }
 
+    //todo  返回以Node 为根节点的二叉排序树的最小节点的值
+    public int delRihtTreeMin(Node node) {
+        Node target = node;
+        //循环的查找左子节点，就会找到最小值
+       /* while (target.left != null) {
+            target = target.left;
+        }*/
+        while (target.right != null) {
+            target = target.right;
+        }
+
+        //删除最小结点
+        delNode(target.value);
+        return target.value;
+    }
+
+
     public void delNode(int value) {
         // 1. 找到要删除的节点
         Node targetNode = search(value);
@@ -63,17 +84,64 @@ class BinarySortTreeSets {
         }
         //3.去找targetNode 的父节点
         Node parent = searchParent(value);
+      /*  if (parent == null) {
+           return;
+        }*/
 
+        //todo 删除的是叶子节点
         if (targetNode.left == null && targetNode.right == null) {
             if (parent.left != null && parent.left.value == value) {
                 parent.left = null;
             } else if (parent.right != null && parent.right.value == value) {
                 parent.right = null;
             }
-            //删除有两颗子树的节点
+            //todo 删除的是有两颗子树的节点
         } else if (targetNode.left != null && targetNode.right != null) {
-
+            //int treeMin = delRihtTreeMin(targetNode.right);
+            int treeMin = delRihtTreeMin(targetNode.left);
+            targetNode.value = treeMin;
+            //todo 删除的是有一颗字树的节点
         } else {
+            // 删除节点的左节点不为空 (后续直接让父节点的左/右节点等于删除节点的左节点)
+            if (targetNode.left != null) {
+                if (parent != null) {
+                    // 如果父节点的左节点就是要删除的值
+                    if (parent.left.value == value) {
+                        parent.left = targetNode.left;
+                    } else { // 便让父节点的右节点等于删除节点的左节点
+                        parent.right = targetNode.left;
+                    }
+                } else {
+                    root = targetNode.left;
+                }
+            } else { //删除节点右节点不为空 (..... 等于 删除节点的 右节点)
+                if (parent != null) {
+                    // 如果父节点的左节点就是要删除的值
+                    if (parent.left.value == value) {
+                        parent.left = targetNode.right;
+                    } else { //便让父节点的右节点等于删除节点的右节点
+                        parent.right = targetNode.right;
+                    }
+                } else {
+                    root = targetNode.right;
+                }
+            }
+
+            /*// 判断父节点的下一个value是否是要删除的子节点
+            if (parent.left.value == value) {
+                //判断 子树是 左侧为叶子节点还是右侧为叶子节点
+                if (targetNode.left != null) {
+                    parent.left = targetNode.left;
+                } else {
+                    parent.left = targetNode.right;
+                }
+            } else {
+                if (targetNode.left != null) {
+                    parent.right = targetNode.left;
+                } else {
+                    parent.right = targetNode.right;
+                }
+            }*/
 
         }
 
