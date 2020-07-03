@@ -16,12 +16,15 @@ public class AllLeetCodeMain {
 
 
         // LeetCode One
-        System.out.println(Arrays.toString(new OneTwoTwenty().twoSum(new int[]{3, 2, 4, 0, 1, 4}, 8)));
+        //System.out.println(Arrays.toString(new OneTwoTwenty().twoSum(new int[]{3, 2, 4, 0, 1, 4}, 8)));
 
 
         // LeetCode Two
-        System.out.println(NeedResources.ot1(new OneTwoTwenty()));
+        //System.out.println(NeedResources.ot1(new OneTwoTwenty()));
 
+
+        //
+        System.out.println(new OneTwoTwenty().lengthOfLongestSubstring("abcabcbb"));;
 
     }
 }

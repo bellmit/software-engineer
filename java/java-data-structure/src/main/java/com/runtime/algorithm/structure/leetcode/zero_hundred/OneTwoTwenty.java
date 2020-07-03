@@ -1,7 +1,11 @@
 package com.runtime.algorithm.structure.leetcode.zero_hundred;
 
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * @author Apache-x | A You Ok
@@ -79,6 +83,55 @@ public class OneTwoTwenty {
             curr.next = new ListNode(carry);
         }
         return dummyHead.next;
+    }
+
+    //todo 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+    /*public int lengthOfLongestSubstring(String s) {
+        // 哈希集合 记录每个字符是否出现过
+        HashSet occ = new HashSet<Character>();
+        int n = s.length();
+        // 右指针 初始值为-1,相当于字符串的左边界的左侧,还没有开始移动
+        int rk = -1, ans = 0;
+
+        for (int i = 0; i < n; ++i) {
+            if (i != 0) {
+                //左指针向右移动一格,移除一个字符
+                System.out.println("s.charAt(i - 1) -> " + s.charAt(i - 1));
+                occ.remove(s.charAt(i - 1));
+            }
+            while (rk + 1 < n && !occ.contains(s.charAt(rk + 1))) {
+                System.out.println(s.charAt(rk + 1));
+                //不断地移动右指针
+                occ.add(s.charAt(rk + 1));
+                ++rk;
+            }
+            //第i到rk个字符 是一个极长的无重复字符串
+            ans = Math.max(ans, rk - i + 1);
+        }
+        return ans;
+    }*/
+
+    public int lengthOfLongestSubstring(String s) {
+        int[] last = new int[128];
+        for (int i = 0; i < 128; i++) {
+            last[i] = -1;
+        }
+        int n = s.length();
+        int res = 0;
+        int start = 0;
+        for (int i = 0; i < n; i++) {
+            int index = s.charAt(i);
+            System.out.println("start before ->" + start);
+            start = Math.max(start, last[index] + 1);
+            System.out.println("start after ->" + start);
+            //System.out.println("last[index] + 1 -> " +last[index] + 1);
+            res = Math.max(res, i - start + 1);
+            // System.out.println("i - start + 1 -> " + (i - start + 1));
+            last[index] = i;
+
+        }
+        //System.out.println(s.substring(res));
+        return res;
     }
 
 
