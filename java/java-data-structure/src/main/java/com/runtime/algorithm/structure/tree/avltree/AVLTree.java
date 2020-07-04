@@ -9,7 +9,8 @@ package com.runtime.algorithm.structure.tree.avltree;
 public class AVLTree {
     public static void main(String[] args) {
         AVLTreeManager avlTreeManager = new AVLTreeManager();
-        int[] arr = {4,3,6,5,7,8};
+        //int[] arr = {4,3,6,5,7,8};
+        int[] arr = { 10, 12, 8, 9, 7, 6 };
         //创建一个 AVLTree对象
         //添加结点
         for (int i = 0; i < arr.length; i++) {

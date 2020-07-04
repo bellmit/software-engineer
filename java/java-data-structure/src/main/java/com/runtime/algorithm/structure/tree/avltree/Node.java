@@ -47,8 +47,22 @@ public class Node {
         this.right = this.right.right;
         // 把当前节点的左子树 设置为新的根节点
         this.left = newNode;
+    }
 
-
+    //todo 右旋转方法
+    private void rightRotate() {
+        // 创建新的节点,值等于当前节点的值
+        Node newNode = new Node(this.value);
+        // 把当前节点的右子树 设置为 新节点的右子树
+        newNode.right = this.right;
+        // 把当前节点左字树的右子树 设置为新节点左子树
+        newNode.left = this.left.right;
+        // 把当前节点的值 替换成左子节点的值
+        this.value = this.left.value;
+        // 把当前节点的左子树设置成当前节点左子树的左子树
+        this.left = this.left.left;
+        // 把当前节点的右子树 设置为新的根节点
+        this.right = newNode;
     }
 
 
@@ -93,16 +107,35 @@ public class Node {
 
         }
 
-        //System.out.println(this.rightHeight() - this.leftHeight());
-        //todo 如果 当前节点的右子树的高度 渐去 当前节点的左子树的高度 > 1 则需要左旋转
-        if (this.rightHeight() - this.leftHeight() > 1) {
+
+        //todo 如果 当前节点的右子树的高度 减去 当前节点的左子树的高度 > 1 则需要左旋转
+        if (rightHeight() - leftHeight() > 1) {
             //todo 如果它的右子树的 左子树 的高度大于它的右子树的右子树的高度
-            if (this.right != null && this.right.rightHeight() > this.right.leftHeight()) {
+            if (right != null && right.leftHeight() > right.rightHeight()) {
+                //先对右子结点进行右旋转
+                right.rightRotate();
+                //然后在对当前结点进行左旋转
+                leftRotate(); //左旋转..
+            } else {
+                //直接进行左旋转即可
                 leftRotate();
             }
+            return; //必须要!!!
         }
 
-
+        //todo 如果当前节点的的左子树的高度 减去 当前节点的右子树的高度 > 1 则需要右旋转
+        if (leftHeight() - rightHeight() > 1) {
+            //todo 如果它的左子树的右子树高度大于它的左子树的高度
+            if (left != null && left.rightHeight() > left.leftHeight()) {
+                //先对当前结点的左结点(左子树)->左旋转
+                left.leftRotate();
+                //再对当前结点进行右旋转
+                rightRotate();
+            } else {
+                //直接进行右旋转即可
+                rightRotate();
+            }
+        }
     }
 
 
