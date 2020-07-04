@@ -3,9 +3,11 @@ package com.runtime.algorithm.structure.leetcode.zero_hundred;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
+import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * @author Apache-x | A You Ok
@@ -132,6 +134,19 @@ public class OneTwoTwenty {
         }
         //System.out.println(s.substring(res));
         return res;
+    }
+
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+
+        ArrayList<Integer> list = new ArrayList<>();
+        if (root != null) {
+
+           // System.out.println(inorderTraversal(root.left));
+
+        }
+
+        return null;
     }
 
 

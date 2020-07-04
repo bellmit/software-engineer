@@ -24,7 +24,9 @@ public class AllLeetCodeMain {
 
 
         //
-        System.out.println(new OneTwoTwenty().lengthOfLongestSubstring("abcabcbb"));;
+        System.out.println(new OneTwoTwenty().lengthOfLongestSubstring("abcabcbb"));
+
+
 
     }
 }
