@@ -7,6 +7,7 @@ package com.runtime.algorithm.structure.leetcode.tree;
  * @Description
  */
 
+//94 题用到
 class TreeNodeInorderTraversal {
     int val;
     TreeNodeInorderTraversal left;
@@ -30,5 +31,32 @@ class TreeNodeInorderTraversal {
         traversal1.right = traversal2;
         traversal2.left = traversal4;
         return traversal1;
+    }
+}
+
+//95 题用到
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                '}';
     }
 }

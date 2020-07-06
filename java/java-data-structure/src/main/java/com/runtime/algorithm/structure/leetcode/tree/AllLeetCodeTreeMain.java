@@ -11,11 +11,14 @@ public class AllLeetCodeTreeMain {
     public static void main(String[] args) {
 
         // todo 94. 二叉树的中序遍历
-        System.out.println(
+       /* System.out.println(
                 new BinaryTree().inorderTraversal(
                         TreeNodeInorderTraversal.getTreeNodeInorderTraversal())
+        );*/
+
+        // todo 95. 不同的二叉搜索树
+        System.out.println(
+                new BinaryTree().generateTrees(3)
         );
-
-
     }
 }
