@@ -16,6 +16,7 @@ public class AllLeetCodeTreeMain {
                         TreeNodeInorderTraversal.getTreeNodeInorderTraversal())
         );*/
 
+
         // todo 95. 不同的二叉搜索树
         System.out.println(
                 new BinaryTree().generateTrees(3)
