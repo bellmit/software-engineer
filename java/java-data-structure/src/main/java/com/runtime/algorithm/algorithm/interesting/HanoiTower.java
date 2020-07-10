@@ -1,4 +1,4 @@
-package com.runtime.algorithm.algorithm.divide_conquer;
+package com.runtime.algorithm.algorithm.interesting;
 
 /**
  * @author Apache-x | A You Ok
