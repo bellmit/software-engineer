@@ -1,4 +1,4 @@
-package com.runtime.algorithm.algorithm.prim;
+package com.runtime.algorithm.algorithm.min_tree;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @date 2020/7/9 17:45
  * @Description
  */
-public class PrimAlgorithm {
+public class Prim {
     public static void main(String[] args) {
         //测试看看图是否创建ok
         char[] data = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G'};
