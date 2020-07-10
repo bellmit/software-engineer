@@ -4,7 +4,7 @@ package com.runtime.algorithm.algorithm.dynamic;
  * @author Apache-x | A You Ok
  * @version 1.0
  * @date 2020/7/8 16:45
- * @Description
+ * @Description 动态规划背包问题
  */
 public class Knapsack {
     private static int knapSack(int W, int wt[], int val[], int n) throws IllegalArgumentException {
