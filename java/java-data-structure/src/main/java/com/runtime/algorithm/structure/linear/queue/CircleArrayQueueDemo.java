@@ -1,5 +1,6 @@
 package com.runtime.algorithm.structure.linear.queue;
 
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 /**
@@ -10,6 +11,7 @@ import java.util.Scanner;
  */
 public class CircleArrayQueueDemo {
     public static void main(String[] args) {
+
 
         // 创建一个环形队列
         CircleArray queue = new CircleArray(4); //说明设置4, 其队列的有效数据最大是3
@@ -120,6 +122,8 @@ class CircleArray {
         return value;
 
     }
+
+
 
     // 显示队列的所有数据
     public void showQueue() {

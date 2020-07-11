@@ -21,7 +21,7 @@ public class HeapSort {
         }
 
         System.out.println("构建大顶堆 ");
-        System.out.println(Arrays.toString(arr));
+        //System.out.println(Arrays.toString(arr));
 
         //todo : 将堆顶的元素与末尾的元素交换,将最大值沉到数组末尾
         //todo : 重新调整结构,使其满足堆定义,然后继续交换堆顶元素与当前末尾元素
@@ -34,7 +34,7 @@ public class HeapSort {
             heapSort(arr, 0, i);
 
             //查看每次更改后的数组
-            System.out.println(Arrays.toString(arr));
+            //System.out.println(Arrays.toString(arr));
         }
     }
 
