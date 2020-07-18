@@ -23,7 +23,7 @@ public class SortSummaryS {
 
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
+                if (arr[j] < arr[j + 1]) {
                     flag = true;
                     temp = arr[j + 1];
                     arr[j + 1] = arr[j];
@@ -38,8 +38,6 @@ public class SortSummaryS {
             }
 
         }
-
-        System.out.println(Arrays.toString(arr));
     }
 
     //todo 时间复杂度 为 O(n2)
@@ -148,7 +146,7 @@ public class SortSummaryS {
 
 
     //todo 时间复杂度 O(n log2 n)
-    //todo 思想 : 冲数组中定义出一个中间值 判断左右值 并替换位置 (递归方法 直到结束)
+    //todo 思想 : 从数组中定义出一个中间值 判断左右值 并替换位置 (递归方法 直到结束)
     public static void quickSort(int arr[], int left, int right) {
         //todo 定义两个值 分别为 左下标 与 右下标
         int le = left;
