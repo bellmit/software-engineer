@@ -1,12 +1,10 @@
 package lock;
 
+import java.time.temporal.ValueRange;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.*;
 
 /**
  * @author Apache-x | A You Ok
@@ -16,6 +14,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 class MyCache {
     private volatile Map<String, Object> map = new HashMap<>();
+
     //private ReadWriteLock rwLock = new ReentrantReadWriteLock();
     private Lock rwLock = new ReentrantLock();
 
@@ -68,7 +67,7 @@ class MyCache {
 public class ReadWriteLockDemo {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         MyCache myCache = new MyCache();
 
         for (int i = 1; i <= 5; i++) {
@@ -84,7 +83,17 @@ public class ReadWriteLockDemo {
             }, String.valueOf(i)).start();
         }
 
+
+        TimeUnit.SECONDS.sleep(5);
+        //System.out.println(123);
+        ;
+
     }
+
+
+    //Lock lock = new ReentrantLock();
+    //Lock lock;
+    //Condition condition = lock.newCondition();
 
 
 }
