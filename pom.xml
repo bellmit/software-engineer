@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>software engineer</artifactId>
+    <artifactId>software-engineer</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -25,6 +25,10 @@
 
     </build>
 
+    <modules>
+        <module>java</module>
+        <module>common</module>
+    </modules>
 
 
 </project>
