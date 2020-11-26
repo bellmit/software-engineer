@@ -2,11 +2,15 @@ package runtime.window.cout;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.functions.KeySelector;
+import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
+import org.apache.flink.streaming.api.functions.windowing.ProcessAllWindowFunction;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.assigners.*;
 import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.api.windowing.triggers.CountTrigger;
 import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
@@ -25,13 +29,14 @@ public class CustomWindow {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         DataStream<Version1Pojo> stream = CustomKafkaConsumer.getResultMethod(env, args, "T1", "Version1Pojo");
+        env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
 
         /**
          * 验证 Flink Window 的 Count Window 以及原理实现 [TumblingCountWindow,Sli]
          */
 
         // countWindow  滑动窗口与滚动窗口
-       /* stream.keyBy(Version1Pojo::getUserId)
+        stream.keyBy(Version1Pojo::getUserId)
                 //.countWindow(1)
                 .countWindow(4, 5) // 预期 输出触发一次 为 6
                 .process(new ProcessWindowFunction<Version1Pojo, Object, Integer, GlobalWindow>() {
@@ -44,10 +49,13 @@ public class CustomWindow {
                         System.out.println("触发一次");
                         Thread.sleep(1000);
                     }
-                });*/
-       /*stream.keyBy(Version1Pojo::getUserId)
+                });
+
+
+        // timeWindow
+        stream.keyBy(Version1Pojo::getUserId)
                 //.timeWindow(Time.seconds(10))
-                .timeWindow(Time.seconds(1),Time.seconds(1))
+                .timeWindow(Time.seconds(1), Time.seconds(1))
                 .process(new ProcessWindowFunction<Version1Pojo, Object, Integer, TimeWindow>() {
                     @Override
                     public void process(Integer integer, Context context, Iterable<Version1Pojo> elements, Collector<Object> out) throws Exception {
@@ -57,10 +65,18 @@ public class CustomWindow {
                         }
                         System.out.println("触发一次");
                     }
-                });*/
+                });
 
-        stream.keyBy(Version1Pojo::getUserId)
-                //.window(TumblingEventTimeWindows.of(Time.seconds(1), Time.seconds(9)))
+
+        // window
+        stream.assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Version1Pojo>(Time.seconds(1)) {
+            @Override
+            public long extractTimestamp(Version1Pojo element) {
+                return element.getTimestamp();
+            }
+        })
+                .keyBy(Version1Pojo::getUserId)
+                .window(TumblingEventTimeWindows.of(Time.seconds(1)))
                 //.window(TumblingProcessingTimeWindows.of(Time.seconds(1)))
                 //.window(SlidingEventTimeWindows.of(Time.seconds(1), Time.seconds(1)))
                 //.window(SlidingProcessingTimeWindows.of(Time.seconds(1), Time.seconds(1)))
@@ -68,10 +84,32 @@ public class CustomWindow {
                 //.window(ProcessingTimeSessionWindows.withGap(Time.seconds(1)))
                 //.window(GlobalWindows.create())
                 //.window(DynamicProcessingTimeSessionWindows.withDynamicGap(null))
-                .window(DynamicEventTimeSessionWindows.withDynamicGap(null))
+                //.window(DynamicEventTimeSessionWindows.withDynamicGap(null))
                 .process(new ProcessWindowFunction<Version1Pojo, Object, Integer, TimeWindow>() {
                     @Override
                     public void process(Integer integer, Context context, Iterable<Version1Pojo> elements, Collector<Object> out) throws Exception {
+
+                        for (Version1Pojo element : elements) {
+                            System.out.println(element);
+                        }
+                        System.out.println("触发一次");
+                    }
+                });
+
+
+        // windowAll
+        stream.keyBy(Version1Pojo::getUserId)
+//                .windowAll(TumblingProcessingTimeWindows.of(Time.seconds(1)))
+//                .windowAll(TumblingEventTimeWindows.of(Time.seconds(1)))
+//                .windowAll(SlidingProcessingTimeWindows.of(Time.seconds(1),Time.seconds(1)))
+//                .windowAll(SlidingEventTimeWindows.of(Time.seconds(1),Time.seconds(1)))
+//                .windowAll(DynamicProcessingTimeSessionWindows.withDynamicGap(null))
+                .windowAll(DynamicProcessingTimeSessionWindows.withDynamicGap(null))
+//                .window(GlobalWindows.create())
+                //.trigger(new CountTrigger<>(1))
+                .process(new ProcessAllWindowFunction<Version1Pojo, Object, TimeWindow>() {
+                    @Override
+                    public void process(Context context, Iterable<Version1Pojo> elements, Collector<Object> out) throws Exception {
 
                         for (Version1Pojo element : elements) {
                             System.out.println(element);
