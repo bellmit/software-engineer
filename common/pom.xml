@@ -21,7 +21,7 @@
         <flink.version>1.9.1</flink.version>
         <es.version>7.2.0</es.version>
         <hadoop.version>2.6.0</hadoop.version>
-        <mysql.driver.version>8.0.13</mysql.driver.version>
+        <mysql.driver.version>8.0.16</mysql.driver.version>
 <!--        <mysql.driver.version>5.1.35</mysql.driver.version>-->
         <hbase.version>1.2.0</hbase.version>
         <cdh.version>cdh5.14.0</cdh.version>
