@@ -26,9 +26,6 @@ public class testHbase {
         conf.set("hbase.zookeeper.quorum", "master");// 使用eclipse时必须添加这个，否则无法定位master需要配置hosts
         conf.set("hbase.zookeeper.property.clientPort", "2181");
         conf.set("hbase.zookeeper.quorum", "node01,node02,node03");
-        conf.set("hbase.master.port", "16000");
-        conf.set("hbase.rootdir", "hdfs://cdhbds/hbase");
-        conf.set("dfs.nameservices", "cdhbds");
     }
 
     public static void main(String[] args) throws IOException {

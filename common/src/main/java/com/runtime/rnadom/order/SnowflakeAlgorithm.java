@@ -150,12 +150,12 @@ public class SnowflakeAlgorithm {
 
     /** 测试 */
     public static void main(String[] args) {
-      /*  SnowflakeAlgorithm idWorker = new SnowflakeAlgorithm(0, 0);
+        SnowflakeAlgorithm idWorker = new SnowflakeAlgorithm(0, 0);
         for (int i = 0; i < 1000; i++) {
             long id = idWorker.nextId();
             //System.out.println(Long.toBinaryString(id));
             System.out.println(UUID.randomUUID() + "" + id + Runtime.getRuntime().availableProcessors());
-        }*/
+        }
 
 
         //System.out.println("f73b5664-02de-4d15-8df7-a01cbbbbd24c2847372737469481268".length());

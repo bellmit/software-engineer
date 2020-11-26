@@ -2,31 +2,83 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>software-engineer</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>common</artifactId>
+
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <jedis.version>2.9.0</jedis.version>
+        <scala.version>2.11</scala.version>
+        <flink.version>1.9.1</flink.version>
+        <es.version>7.2.0</es.version>
+        <hadoop.version>2.6.0</hadoop.version>
+        <mysql.driver.version>8.0.13</mysql.driver.version>
+<!--        <mysql.driver.version>5.1.35</mysql.driver.version>-->
+        <hbase.version>1.2.0</hbase.version>
+        <cdh.version>cdh5.14.0</cdh.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+    </properties>
+
     <dependencies>
 
-
         <!--    ES ES ES ES    -->
-
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>transport</artifactId>
             <version>6.2.3</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.elasticsearch.client</groupId>-->
-<!--            <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
-<!--            <version>6.2.3</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.elasticsearch.client</groupId>-->
-<!--            <artifactId>elasticsearch-rest-client-sniffer</artifactId>-->
-<!--            <version>6.2.3</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.elasticsearch.client</groupId>-->
-<!--            <artifactId>elasticsearch-rest-client</artifactId>-->
-<!--            <version>6.2.3</version>-->
-<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>6.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client-sniffer</artifactId>
+            <version>6.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>6.2.3</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.driver.version}</version>
+        </dependency>
+
+        <!--c3p0数据库连接池-->
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+
+
 
 
 
@@ -74,27 +126,5 @@
         </dependency>
 
     </dependencies>
-    <parent>
-        <artifactId>software-engineer</artifactId>
-        <groupId>org.example</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>common</artifactId>
-
-
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <jedis.version>2.9.0</jedis.version>
-        <scala.version>2.11</scala.version>
-        <flink.version>1.9.1</flink.version>
-        <es.version>7.2.0</es.version>
-        <hadoop.version>2.6.0</hadoop.version>
-        <mysql.driver.version>5.1.35</mysql.driver.version>
-        <hbase.version>1.2.0</hbase.version>
-        <cdh.version>cdh5.14.0</cdh.version>
-        <c3p0.version>0.9.1.2</c3p0.version>
-    </properties>
 </project>

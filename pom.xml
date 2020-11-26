@@ -29,6 +29,7 @@
         <module>java</module>
         <module>common</module>
         <module>flink-demo</module>
+        <module>contab-task</module>
     </modules>
 
 

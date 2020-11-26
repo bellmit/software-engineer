@@ -11,5 +11,46 @@
 
     <artifactId>flink-demo-sql</artifactId>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <flink.version>1.11.0</flink.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- mysql-cdc MySQL CDC connector -->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.ververica</groupId>-->
+<!--            <artifactId>flink-connector-mysql-cdc</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+
+        <!-- canal-json  -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.flink</groupId>-->
+<!--            <artifactId>flink-json</artifactId>-->
+<!--            <version>${flink.version}</version>-->
+<!--            &lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
+<!--        </dependency>-->
+
+        <!-- flink-connector-kafka_2.11 使用Kafka的canal-json-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.flink</groupId>-->
+<!--            <artifactId>flink-connector-kafka_2.11</artifactId>-->
+<!--            <version>1.11.0</version>-->
+<!--        </dependency>-->
+
+        <!-- changelog-json  Kafka的changelog-json   -->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.ververica</groupId>-->
+<!--            <artifactId>flink-format-changelog-json</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+
+
+
+    </dependencies>
+
 
 </project>

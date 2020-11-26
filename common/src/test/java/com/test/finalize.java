@@ -11,12 +11,10 @@ import java.lang.ref.ReferenceQueue;
  */
 public class finalize {
     public static void main(String[] args) {
-        PhantomReference<Object> reference = new PhantomReference<>(new Object(), new ReferenceQueue<>());
+            System.out.println(3 % 2 != 0);
+
 
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
+
 }

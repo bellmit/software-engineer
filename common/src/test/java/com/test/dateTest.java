@@ -13,11 +13,24 @@ import java.util.Date;
 public class dateTest {
     public static void main(String[] args) {
 
-        System.out.println(DateUtils.str2Date(DateUtils.addDay(new Date(),1).toString(), DateUtils.FORMAT_YMDHMS));
-        System.out.println(DateUtils.getMillon(System.currentTimeMillis()));
-        System.out.println(DateUtils.getDay(System.currentTimeMillis()));
-        //System.out.println();
+        String str = "{\"properties\":{\"disease_id\":{\"type\":\"keyword\"},\"weight_value\":{\"type\":\"integer\"},\"keyword\":{\"type\":\"text\",\"analyzer\":\"ik_max_word\"},\"disease_name\":{\"type\":\"text\",\"analyzer\":\"ik_max_word\"},\"status\":{\"type\":\"integer\"},\"body_parts_id\":{\"type\":\"integer\"},\"body_parts_name\":{\"type\":\"text\",\"analyzer\":\"ik_max_word\"}}}\n";
+        String str1 = "{\n" +
+                "    \"settings\" : {\n" +
+                "        \"number_of_shards\" : 3,\n" +
+                "        \"number_of_replicas\" : 2\n" +
+                "    },\n" +
+                "    \"mappings\" : {\n" +
+                "        \"tweet\" : {\n" +
+                "            \"properties\" : {\n" +
+                "                \"message\" : { \"type\" : \"text\" }\n" +
+                "            }\n" +
+                "        }\n" +
+                "    },\n" +
+                "    \"aliases\" : {\n" +
+                "        \"twitter_alias\" : {}\n" +
+                "    }\n" +
+                "}";
 
-
+        System.out.println(str1.length() % 2);
     }
 }
