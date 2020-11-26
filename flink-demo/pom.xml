@@ -14,5 +14,6 @@
     <modules>
         <module>flink-demo-sql</module>
         <module>flink-demo-streaming</module>
+        <module>dataproduct</module>
     </modules>
 </project>

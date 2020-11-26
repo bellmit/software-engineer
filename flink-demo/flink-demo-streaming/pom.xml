@@ -10,25 +10,85 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>flink-demo-streaming</artifactId>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <scala.version>2.11</scala.version>
-        <flink.version>1.9.1</flink.version>
         <hadoop.version>2.6.0</hadoop.version>
-        <!--        <mysql.driver.version>5.1.35</mysql.driver.version>-->
-        <mysql.driver.version>8.0.13</mysql.driver.version>
+        <flink.version>1.9.1</flink.version>
+        <mysql.driver.version>5.1.35</mysql.driver.version>
         <cdh.version>cdh5.14.0</cdh.version>
         <c3p0.version>0.9.1.2</c3p0.version>
-        <druid.version>1.1.10</druid.version>
+
     </properties>
 
 
+    <!--很多包都是CDH版本得到，如果不指定CDH的下载源，那么是下载不下来的-->
+    <repositories>
+        <repository>
+            <id>cloudera</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <!--es 依赖-->
+
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.bahir</groupId>
+            <artifactId>flink-connector-redis_2.11</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
+        <!-- mysql driver -->
+
+        <!--c3p0数据库连接池-->
+
+        <!--kafka 客户端-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.11</artifactId>
+            <version>0.9.0.1</version>
+        </dependency>
+        <!--flink对接kafka：导入flink使用kafka的依赖-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka-0.9_${scala.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <!-- Streaming 处理 -->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-java_${scala.version}</artifactId>
             <version>${flink.version}</version>
+        </dependency>
+
+        <!-- mysql driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.driver.version}</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-elasticsearch6_${scala.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>-->
+        <!-- Json 转换 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.44</version>
         </dependency>
 
 
@@ -56,6 +116,28 @@
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.agkn</groupId>
+            <artifactId>hll</artifactId>
+            <version>1.6.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-statebackend-rocksdb_2.12</artifactId>
+            <version>1.8.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>compile</scope>
+        </dependency>
+
+
     </dependencies>
 
 </project>

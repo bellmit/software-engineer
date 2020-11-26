@@ -19,18 +19,14 @@ public class Join {
         DataStreamSource<Object> source1 = env.addSource(null);
         DataStreamSource<Object> source2 = env.addSource(null);
 
+
         source1
                 .join(source2)
                 .where(value -> value)
                 .equalTo(value -> value)
                 .window(TumblingEventTimeWindows.of(Time.seconds(5)))
-                .apply(new JoinFunction<Object, Object, Object>() {
-                    @Override
-                    public Object join(Object first, Object second) throws Exception {
-                        return null;
-                    }
-                });
-
+                .apply(
+                        (JoinFunction<Object, Object, Object>) (first, second) -> null);
 
     }
 
