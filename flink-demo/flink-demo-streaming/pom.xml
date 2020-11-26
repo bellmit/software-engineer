@@ -17,7 +17,7 @@
         <scala.version>2.11</scala.version>
         <hadoop.version>2.6.0</hadoop.version>
         <flink.version>1.9.1</flink.version>
-        <mysql.driver.version>5.1.35</mysql.driver.version>
+        <mysql.driver.version>8.0.16</mysql.driver.version>
         <cdh.version>cdh5.14.0</cdh.version>
         <c3p0.version>0.9.1.2</c3p0.version>
 
