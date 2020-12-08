@@ -75,19 +75,16 @@ public class ValueStateCountDemo {
                  */
                 /*.flatMap(new RichFlatMapFunction<Tuple2<String, Long>, Long>() {
                     private ListState<Long> tempState;
-                    //private ValueState<Long> tempCount;
 
                     @Override
                     public void open(Configuration parameters) throws Exception {
                         super.open(parameters);
                         this.tempState = getRuntimeContext().getListState(new ListStateDescriptor<Long>("tempState", Types.LONG));
-                        //this.tempCount = getRuntimeContext().getState(new ValueStateDescriptor<Long>("tempState", Types.LONG));
                     }
 
                     @Override
                     public void flatMap(Tuple2<String, Long> value, Collector<Long> out) throws Exception {
                         this.tempState.add(value.f1);
-                        //this.tempCount.update(tempCount.value() + 1);
 
                         if (this.tempState.get().spliterator().estimateSize() >= 3) {
 
@@ -103,6 +100,7 @@ public class ValueStateCountDemo {
                 /**
                  * MapState
                  */
+
                 /*.flatMap(new RichFlatMapFunction<Tuple2<String, Long>, Long>() {
 
                     private MapState<String, Long> tempState;
