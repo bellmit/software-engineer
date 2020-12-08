@@ -3,6 +3,7 @@ scalastyle-output.xml
 .classpath
 .idea
 .metadata
+
 .settings
 .project
 .version.properties
@@ -16,7 +17,9 @@ tmp
 *.jar
 *.zip
 *.log
+*.xml
 *.pyc
+*.properties
 .DS_Store
 build-target
 flink-python/**/*.c
@@ -31,7 +34,17 @@ atlassian-ide-plugin.xml
 /docs/.jekyll-metadata
 *.ipr
 *.iws
+
 tools/flink
 tools/flink-*
 tools/releasing/release
 tools/japicmp-output
+
+
+
+/contab-task/crontab-example/src/main/resources/*
+/contab-task/task-check-es-update/src/main/resources/*
+/common/src/main/resources/*
+/flink-demo/flink-demo-streaming/src/main/resources/*
+/flink-demo/flink-demo-sql/src/main/resources/*
+/flink-demo/dataproduct/src/main/resources/*
