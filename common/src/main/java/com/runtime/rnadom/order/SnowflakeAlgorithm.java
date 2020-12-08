@@ -153,7 +153,7 @@ public class SnowflakeAlgorithm {
         SnowflakeAlgorithm idWorker = new SnowflakeAlgorithm(0, 0);
         for (int i = 0; i < 1000; i++) {
             long id = idWorker.nextId();
-            //System.out.println(Long.toBinaryString(id));
+            System.out.println(Long.toBinaryString(id));
             System.out.println(UUID.randomUUID() + "" + id + Runtime.getRuntime().availableProcessors());
         }
 

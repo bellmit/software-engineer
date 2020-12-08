@@ -1,22 +1,19 @@
-package runtime.window.cout;
+package runtime.window;
 
-import org.apache.flink.api.common.functions.MapFunction;
-import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
 import org.apache.flink.streaming.api.functions.windowing.ProcessAllWindowFunction;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
-import org.apache.flink.streaming.api.windowing.assigners.*;
+import org.apache.flink.streaming.api.windowing.assigners.DynamicProcessingTimeSessionWindows;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.api.windowing.triggers.CountTrigger;
 import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 import runtime.pojo.Version1Pojo;
 import runtime.utils.CustomKafkaConsumer;
-import sun.java2d.pipe.ValidatePipe;
 
 /**
  * @author Apache-x | A You Ok
@@ -118,6 +115,10 @@ public class CustomWindow {
                     }
                 });
 
+
+        // Non-KeyBy AllWindow
+        stream.windowAll(TumblingEventTimeWindows.of(Time.seconds(1)));
+        stream.timeWindowAll(Time.seconds(1));
 
         env.execute();
     }
