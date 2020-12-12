@@ -1,4 +1,4 @@
-package runtime.state;
+package runtime.testing.state;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
@@ -11,7 +11,6 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 
 import java.util.Random;
-import java.util.UnknownFormatConversionException;
 
 /**
  * @author Apache-x | A You Ok
@@ -22,7 +21,8 @@ import java.util.UnknownFormatConversionException;
 public class ValueStateCountDemo {
     public static void main(String[] args) {
 
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        //StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
 
 
         /**
@@ -30,6 +30,9 @@ public class ValueStateCountDemo {
          * hadoop
          * hadoop
          */
+
+        // socketTextStream = 1 map = 8 keyBy = 8 flatMap = 8 print = 8
+
         env.socketTextStream("node01", 6657)
                 .map(new MapFunction<String, Tuple2<String, Long>>() {
                     @Override
@@ -132,8 +135,8 @@ public class ValueStateCountDemo {
 
 
         try {
+            System.out.println(env.getExecutionPlan());
             env.execute();
-            env.getExecutionPlan();
         } catch (Exception e) {
             e.printStackTrace();
         }

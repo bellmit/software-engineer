@@ -1,4 +1,4 @@
-package runtime.window;
+package runtime.testing.window;
 
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -9,9 +9,7 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 import org.apache.flink.util.OutputTag;
 import runtime.pojo.Version1Pojo;
-import runtime.utils.CustomKafkaConsumer;
-import runtime.window.code.CustomCountTrigger;
-import runtime.window.code.CustomTumblingProcessingTimeWindows;
+import runtime.utils.datasource.CustomKafkaConsumer;
 
 /**
  * @author Apache-x | A You Ok
@@ -22,8 +20,7 @@ import runtime.window.code.CustomTumblingProcessingTimeWindows;
 public class CustomTrigger {
     public static void main(String[] args) throws Exception {
 
-        final OutputTag<Version1Pojo> outputTag = new OutputTag<Version1Pojo>("side-output") {
-        };
+        final OutputTag<Version1Pojo> outputTag = new OutputTag<Version1Pojo>("side-output") {};
 
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

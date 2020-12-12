@@ -1,4 +1,4 @@
-package runtime.window;
+package runtime.testing.window;
 
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -13,7 +13,7 @@ import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 import runtime.pojo.Version1Pojo;
-import runtime.utils.CustomKafkaConsumer;
+import runtime.utils.datasource.CustomKafkaConsumer;
 
 /**
  * @author Apache-x | A You Ok

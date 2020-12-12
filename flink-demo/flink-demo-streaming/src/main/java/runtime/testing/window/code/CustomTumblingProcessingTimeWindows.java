@@ -1,12 +1,11 @@
-package runtime.window.code;
+package runtime.testing.window.code;
 
 import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.common.typeutils.TypeSerializer;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.assigners.WindowAssigner;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.api.windowing.triggers.EventTimeTrigger;
+import org.apache.flink.streaming.api.windowing.triggers.ProcessingTimeTrigger;
 import org.apache.flink.streaming.api.windowing.triggers.Trigger;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 
@@ -16,19 +15,19 @@ import java.util.Collections;
 /**
  * @author Apache-x | A You Ok
  * @version 1.0
- * @date 2020/11/27 10:20
+ * @date 2020/11/27 10:24
  * @Description
  */
-public class CustomTumblingEventTimeWindows extends WindowAssigner<Object, TimeWindow> {
+public class CustomTumblingProcessingTimeWindows extends WindowAssigner<Object, TimeWindow> {
     private static final long serialVersionUID = 1L;
 
     private final long size;
 
     private final long offset;
 
-    protected CustomTumblingEventTimeWindows(long size, long offset) {
+    private CustomTumblingProcessingTimeWindows(long size, long offset) {
         if (Math.abs(offset) >= size) {
-            throw new IllegalArgumentException("TumblingEventTimeWindows parameters must satisfy abs(offset) < size");
+            throw new IllegalArgumentException("TumblingProcessingTimeWindows parameters must satisfy abs(offset) < size");
         }
 
         this.size = size;
@@ -37,44 +36,40 @@ public class CustomTumblingEventTimeWindows extends WindowAssigner<Object, TimeW
 
     @Override
     public Collection<TimeWindow> assignWindows(Object element, long timestamp, WindowAssignerContext context) {
-        System.out.println(timestamp);
-        if (timestamp > Long.MIN_VALUE) {
-            // Long.MIN_VALUE is currently assigned when no timestamp is present
-            long start = TimeWindow.getWindowStartWithOffset(timestamp, offset, size);
+        final long now = context.getCurrentProcessingTime();
+        long start = TimeWindow.getWindowStartWithOffset(now, offset, size);
+        System.out.println("timestamp" + timestamp + "\t" + "窗口开始时间: " + start + "\t" + "窗口结束时间: " + start + size);
 
-            System.out.println("窗口开始时间: " + start + "\n" + "窗口结束时间: " + start + size);
+        return Collections.singletonList(new TimeWindow(start, start + size));
+    }
 
-            return Collections.singletonList(new TimeWindow(start, start + size));
-        } else {
-            throw new RuntimeException("Record has Long.MIN_VALUE timestamp (= no timestamp marker). " +
-                    "Is the time characteristic set to 'ProcessingTime', or did you forget to call " +
-                    "'DataStream.assignTimestampsAndWatermarks(...)'?");
-        }
+    public long getSize() {
+        return size;
     }
 
     @Override
     public Trigger<Object, TimeWindow> getDefaultTrigger(StreamExecutionEnvironment env) {
-        return EventTimeTrigger.create();
+        return ProcessingTimeTrigger.create();
     }
 
     @Override
     public String toString() {
-        return "TumblingEventTimeWindows(" + size + ")";
+        return "TumblingProcessingTimeWindows(" + size + ")";
     }
 
     /**
-     * Creates a new {@code TumblingEventTimeWindows} {@link WindowAssigner} that assigns
+     * Creates a new {@code TumblingProcessingTimeWindows} {@link WindowAssigner} that assigns
      * elements to time windows based on the element timestamp.
      *
      * @param size The size of the generated windows.
      * @return The time policy.
      */
-    public static CustomTumblingEventTimeWindows of(Time size) {
-        return new CustomTumblingEventTimeWindows(size.toMilliseconds(), 0);
+    public static CustomTumblingProcessingTimeWindows of(Time size) {
+        return new CustomTumblingProcessingTimeWindows(size.toMilliseconds(), 0);
     }
 
     /**
-     * Creates a new {@code TumblingEventTimeWindows} {@link WindowAssigner} that assigns
+     * Creates a new {@code TumblingProcessingTimeWindows} {@link WindowAssigner} that assigns
      * elements to time windows based on the element timestamp and offset.
      *
      * <p>For example, if you want window a stream by hour,but window begins at the 15th minutes
@@ -90,8 +85,8 @@ public class CustomTumblingEventTimeWindows extends WindowAssigner<Object, TimeW
      * @param offset The offset which window start would be shifted by.
      * @return The time policy.
      */
-    public static CustomTumblingEventTimeWindows of(Time size, Time offset) {
-        return new CustomTumblingEventTimeWindows(size.toMilliseconds(), offset.toMilliseconds());
+    public static CustomTumblingProcessingTimeWindows of(Time size, Time offset) {
+        return new CustomTumblingProcessingTimeWindows(size.toMilliseconds(), offset.toMilliseconds());
     }
 
     @Override
@@ -101,6 +96,6 @@ public class CustomTumblingEventTimeWindows extends WindowAssigner<Object, TimeW
 
     @Override
     public boolean isEventTime() {
-        return true;
+        return false;
     }
 }

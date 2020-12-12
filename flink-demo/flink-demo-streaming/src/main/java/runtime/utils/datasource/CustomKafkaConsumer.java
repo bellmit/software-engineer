@@ -1,4 +1,4 @@
-package runtime.utils;
+package runtime.utils.datasource;
 
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;

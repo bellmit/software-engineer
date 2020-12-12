@@ -1,4 +1,4 @@
-package runtime.window;
+package runtime.testing.window;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.state.ValueState;

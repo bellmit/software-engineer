@@ -1,4 +1,4 @@
-package runtime.join;
+package runtime.testing.join;
 
 import org.apache.flink.api.common.functions.JoinFunction;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;

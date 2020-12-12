@@ -17,10 +17,4 @@ public class TimeUtil {
             System.out.println(now + offsetSeconds * i);
         }
     }
-    public static void mockData(){
-
-    }
-    public static void main(String[] args) {
-        outputTimeByCountAndOffset(2, Time.seconds(1L));
-    }
 }
