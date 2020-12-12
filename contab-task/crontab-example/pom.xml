@@ -18,7 +18,7 @@
         <flink.version>1.9.1</flink.version>
         <hadoop.version>2.6.0</hadoop.version>
         <!--        <mysql.driver.version>5.1.35</mysql.driver.version>-->
-        <mysql.driver.version>8.0.13</mysql.driver.version>
+        <mysql.driver.version>8.0.16</mysql.driver.version>
         <cdh.version>cdh5.14.0</cdh.version>
         <c3p0.version>0.9.1.2</c3p0.version>
         <druid.version>1.1.10</druid.version>
@@ -80,72 +80,72 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-<!--                    <verbal>true</verbal>-->
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                        <configuration>
-                            <args>
-                                <arg>-dependencyfile</arg>
-                                <arg>${project.build.directory}/.scala_dependencies</arg>
-                            </args>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>
-                                    <artifact>*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/*.SF</exclude>
-                                        <exclude>META-INF/*.DSA</exclude>
-                                        <exclude>META-INF/*.RSA</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-&lt;!&ndash;                                    <mainClass>com.runtime.projecet.QueryMysqlSource</mainClass>&ndash;&gt;
-                                    <mainClass>???</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.0</version>-->
+<!--                <configuration>-->
+<!--                    <source>1.8</source>-->
+<!--                    <target>1.8</target>-->
+<!--                    <encoding>UTF-8</encoding>-->
+<!--                    &lt;!&ndash;                    <verbal>true</verbal>&ndash;&gt;-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>net.alchim31.maven</groupId>-->
+<!--                <artifactId>scala-maven-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>compile</goal>-->
+<!--                            <goal>testCompile</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <args>-->
+<!--                                <arg>-dependencyfile</arg>-->
+<!--                                <arg>${project.build.directory}/.scala_dependencies</arg>-->
+<!--                            </args>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-shade-plugin</artifactId>-->
+<!--                <version>3.1.1</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>shade</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <filters>-->
+<!--                                <filter>-->
+<!--                                    <artifact>*:*</artifact>-->
+<!--                                    <excludes>-->
+<!--                                        <exclude>META-INF/*.SF</exclude>-->
+<!--                                        <exclude>META-INF/*.DSA</exclude>-->
+<!--                                        <exclude>META-INF/*.RSA</exclude>-->
+<!--                                    </excludes>-->
+<!--                                </filter>-->
+<!--                            </filters>-->
+<!--                            <transformers>-->
+<!--                                <transformer-->
+<!--                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+<!--                                    <mainClass>com.runtime.projecet.QueryMysqlSource</mainClass>-->
+<!--                                    <mainClass>???</mainClass>-->
+<!--                                </transformer>-->
+<!--                            </transformers>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 
 </project>
