@@ -53,6 +53,15 @@
 
         <!--c3p0数据库连接池-->
 
+
+        <!-- flink-runtime-web_2.11 -->
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-runtime-web_2.11</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+
         <!--kafka 客户端-->
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -90,6 +99,7 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.44</version>
         </dependency>
+
 
 
         <dependency>
