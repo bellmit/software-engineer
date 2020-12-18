@@ -31,6 +31,7 @@ public class OperatorStateDemo {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         //env.setStateBackend(new FsStateBackend("hdfs://node01:8020/Flink-checkpoint/Px/sofware-engineer/000001"));
+        env.getCheckpointConfig().setCheckpointInterval(5000);
 
         CustomSocketStream.getSocketTestData(env, "node01", 6777)
                 .map(new MapFunction<String, String>() {
@@ -38,7 +39,12 @@ public class OperatorStateDemo {
                     public String map(String value) throws Exception {
                         return value;
                     }
-                }).process(new CustomOperatorStateFunction(8)).setParallelism(1);
+                })//.shuffle()
+                //.global()
+                //.rebalance()
+                //.forward()
+                //.broadcast()
+                .process(new CustomOperatorStateFunction(8)).setParallelism(8);
 
         try {
             System.out.println(env.getExecutionPlan());
@@ -94,6 +100,7 @@ public class OperatorStateDemo {
         @Override
         public void processElement(String value, Context ctx, Collector<Object> out) throws Exception {
 
+            System.out.println(getRuntimeContext().getIndexOfThisSubtask());
             String UK = value + "|||";
 
 
@@ -121,7 +128,7 @@ public class OperatorStateDemo {
         }
     }
 
-    public static class CustomOperatorListStateFunction extends ProcessFunction<String, Object> implements ListCheckpointed<Serializable>{
+    public static class CustomOperatorListStateFunction extends ProcessFunction<String, Object> implements ListCheckpointed<Serializable> {
         @Override
         public List snapshotState(long checkpointId, long timestamp) throws Exception {
             return null;
