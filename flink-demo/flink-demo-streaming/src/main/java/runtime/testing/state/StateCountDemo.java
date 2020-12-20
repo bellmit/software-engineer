@@ -11,7 +11,9 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 import runtime.testing.state.function.CustomMapState;
 import runtime.testing.state.function.CustomValueState;
+import runtime.testing.state.function.merging.CustomAggregatingState;
 import runtime.testing.state.function.merging.CustomListState;
+import runtime.testing.state.function.merging.CustomReducingState;
 
 import java.util.Random;
 
@@ -49,15 +51,30 @@ public class StateCountDemo {
                  * Value State
                  */
                 //.flatMap(new CustomValueState());
+
                 /**
                  * ListState
                  */
                 //.flatMap(new CustomListState());
+
                 /**
                  * MapState
                  */
-                .flatMap(new CustomMapState());
+                //.flatMap(new CustomMapState());
 
+                /**
+                 * ReducingState
+                 */
+                //.flatMap(new CustomReducingState())
+
+                /**
+                 * AggregatingState
+                 */
+                .flatMap(new CustomAggregatingState())
+
+
+
+                .print();
 
 
 

@@ -14,6 +14,7 @@ public interface SplitSeparator {
     String NORMAL_STR = "正常";
     String SPLIT_4 = ",";
     String SPLIT_5 = "#";
+    String SPLIT_6 = " ";
 
 
     String LIGHT = "轻";
