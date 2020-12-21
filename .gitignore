@@ -48,3 +48,4 @@ tools/japicmp-output
 /flink-demo/flink-demo-streaming/src/main/resources/*
 /flink-demo/flink-demo-sql/src/main/resources/*
 /flink-demo/dataproduct/src/main/resources/*
+/flink-demo/flink-demo-streaming/src/main/resources/application.properties
