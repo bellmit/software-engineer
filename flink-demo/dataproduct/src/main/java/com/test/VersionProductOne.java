@@ -94,7 +94,7 @@ public class VersionProductOne {
             // Thread.sleep(5000);
             //Thread.sleep(300);
             // kafkaProducer.send(new ProducerRecord<>("DDL", JSON.toJSONString(getData())));
-            kafkaProducer.send(new ProducerRecord<>("test2", JSON.toJSONString(getData())));
+            kafkaProducer.send(new ProducerRecord<>("T1", JSON.toJSONString(getData())));
             kafkaProducer.flush();//刷新
             System.out.println(getData());
         }

@@ -6,5 +6,5 @@ package com.datasource;
  * @date 2020/11/26 14:19
  * @Description
  */
-public class KafkaConnector {
+public class SoftWareSourceProduce {
 }

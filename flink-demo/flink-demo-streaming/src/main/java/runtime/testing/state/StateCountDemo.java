@@ -7,6 +7,7 @@ import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
+import org.apache.flink.runtime.state.filesystem.FsStateBackend;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 import runtime.testing.state.function.CustomMapState;
@@ -27,8 +28,13 @@ public class StateCountDemo {
     public static void main(String[] args) {
 
         //StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
+        //StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setStateBackend(new FsStateBackend("hdfs://node01:8020/Flink-checkpoint/Px/demo/v1"));
+        //env.getCheckpointConfig().setCheckpointTimeout(5000);
 
+        // hdfs://node01:8020/Flink-checkpoint/Px/atm
+        env.enableCheckpointing(5000);
 
         /**
          * hadoop
@@ -73,9 +79,7 @@ public class StateCountDemo {
                 .flatMap(new CustomAggregatingState())
 
 
-
                 .print();
-
 
 
         try {

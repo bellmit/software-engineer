@@ -1,11 +1,9 @@
 package runtime.example;
 
-import com.sun.istack.internal.Nullable;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.sun.istack.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.val;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;

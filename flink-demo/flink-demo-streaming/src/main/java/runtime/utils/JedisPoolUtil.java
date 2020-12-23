@@ -37,7 +37,7 @@ public class JedisPoolUtil {
                     /**
                      * 最大连接数
                      */
-                    poolConfig.setMaxTotal(5);
+                    poolConfig.setMaxTotal(8);
                     /**
                      * 最大空闲连接数
                      */
@@ -45,7 +45,7 @@ public class JedisPoolUtil {
                     /**
                      * 最大等待时间
                      */
-                    poolConfig.setMaxWaitMillis(50000);
+                    poolConfig.setMaxWaitMillis(1000);
                     /**
                      * 检查连接可用性, 确保获取的redis实例可用
                      */
@@ -57,5 +57,13 @@ public class JedisPoolUtil {
             }
         }
         return jedisPool;
+    }
+
+    public static void main(String[] args) {
+        Jedis jedis = getJedisPool().getResource();
+        // issue the asynchronous request, receive a future for result
+        final String asyncInvokeResult = jedis.get("asyncInvoke");
+        System.out.println(asyncInvokeResult);
+        jedis.close();
     }
 }
