@@ -1,12 +1,16 @@
 package com.test;
 
 import com.alibaba.fastjson.JSON;
+import com.ov;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Apache-x | A You Ok
@@ -71,6 +75,9 @@ public class VersionProductOne {
     }
 
 
+
+
+
     public static void main(String[] args) throws InterruptedException {
 
 
@@ -88,15 +95,19 @@ public class VersionProductOne {
         //1.创建kafka生产者对象 需要配置参数   <key（数据的标识，默认可以是给null）,value（发送的数据）>
         KafkaProducer<String, String> kafkaProducer = new KafkaProducer<String, String>(props);
 
+
+
         //for (int i = 0; i < 10 ; i++) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
 //        for (; ; ) {
-            // Thread.sleep(5000);
+
             //Thread.sleep(300);
             // kafkaProducer.send(new ProducerRecord<>("DDL", JSON.toJSONString(getData())));
-            kafkaProducer.send(new ProducerRecord<>("T1", JSON.toJSONString(getData())));
+            //kafkaProducer.send(new ProducerRecord<>("T1", JSON.toJSONString(getData())));
+            kafkaProducer.send(new ProducerRecord<>("ananlysistest1", ov.str1 + ov.str2));
             kafkaProducer.flush();//刷新
-            System.out.println(getData());
+            //System.out.println(ov.MetaData);
+            TimeUnit.SECONDS.sleep(30);
         }
     }
 

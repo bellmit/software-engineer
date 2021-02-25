@@ -147,6 +147,20 @@
             <scope>compile</scope>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <version>4.12</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-test-utils_${scala.version}</artifactId>
+            <version>1.9.1</version>
+            <!--            <scope>provided</scope>-->
+        </dependency>
+
 
     </dependencies>
 
@@ -171,7 +185,8 @@
 
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>runtime.testing.state.StateCountDemo
+<!--                                    <mainClass>runtime.testing.state.StateCountDemo-->
+                                    <mainClass>runtime.jar.StateCountDemo
                                     </mainClass>
                                 </transformer>
                                 <transformer

@@ -27,7 +27,7 @@ import runtime.utils.SplitSeparator;
  * @Description 实时黑名单统计
  */
 public class MaliceBlackListOutPut {
-    /**
+    /*
      * 黑名单 当天访问超过100次后 加入黑名单 某一个?
      * 当天
      * 超过100次 (1 - 2 - 3 - 4 - 5) ... (中间状态?)

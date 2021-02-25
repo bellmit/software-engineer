@@ -37,8 +37,11 @@ public class demo {
 
         while (true){
             System.out.println(System.currentTimeMillis() % 3600000);
-            System.out.println(System.currentTimeMillis() - System.currentTimeMillis() % 3600000);
+            long thisTimeStamp = System.currentTimeMillis() - System.currentTimeMillis() % 3600000;
+            System.out.println("thisTimeStamp + 3600000 " + (thisTimeStamp + 3600000));
+            //System.out.println(System.currentTimeMillis() - System.currentTimeMillis() % 3600000);
         }
+
 
     }
 

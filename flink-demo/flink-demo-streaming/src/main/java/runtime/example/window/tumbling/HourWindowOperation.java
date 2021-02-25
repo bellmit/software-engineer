@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class HourWindowOperation {
     public static void main(String[] args) {
 
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(new Configuration());
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
 
@@ -76,8 +76,8 @@ public class HourWindowOperation {
         @Override
         public void processElement(CustomWindowPojo value, Context ctx, Collector<Long> out) throws Exception {
             this.listState.add(value);
-            ctx.timerService().registerEventTimeTimer(System.currentTimeMillis() - (System.currentTimeMillis() % 3600000) + 1);
-            //ctx.timerService().registerEventTimeTimer(System.currentTimeMillis() + 10000);
+            //ctx.timerService().registerEventTimeTimer((System.currentTimeMillis() - System.currentTimeMillis() % 3600000) + 3600000);
+            ctx.timerService().registerEventTimeTimer(value.getTimeStamp() + 10000);
         }
 
         @Override
