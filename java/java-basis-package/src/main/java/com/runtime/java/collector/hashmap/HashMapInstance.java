@@ -1,9 +1,7 @@
-package com.runtime.java.collections.hashmap;
+package com.runtime.java.collector.hashmap;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import java.util.*;
 
 /**
  * @author Apache-x | A You Ok
@@ -17,6 +15,7 @@ public class HashMapInstance {
         // 循环遍历Map的 N 中方法
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         map.put(1, 2);
+
         // 1. entrySet遍历，在键和值都需要时使用（最常用）
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             System.out.println("key = " + entry.getKey() + ", value = " + entry.getValue());
@@ -51,6 +50,32 @@ public class HashMapInstance {
         });
 
 
+        List<Map.Entry<String, LinkedList<Object>>> list = null;
+
         //new ConcurrentHashMap.KeySetView<>()
+
+
+        Hashtable hashtable = new Hashtable();
+        /**
+         *     // Make sure the value is not null
+         *         if (value == null) {
+         *             throw new NullPointerException();
+         *         }
+         */
+        //hashtable.put()
+
+
     }
+
+
+    /**
+     * HashMap
+     * 1.7 -> 数组 + 链表
+     * 1.8 -> 数组 + 链表 + 红黑树
+     * <p>
+     * <p>
+     * 数组 + 链表 +
+     */
+
+
 }

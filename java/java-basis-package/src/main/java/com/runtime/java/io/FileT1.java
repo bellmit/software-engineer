@@ -1,6 +1,5 @@
 package com.runtime.java.io;
 
-import com.sun.javaws.jnl.IconDesc;
 import org.junit.Test;
 
 import java.io.*;

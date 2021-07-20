@@ -1,12 +1,6 @@
-package com.runtime.java.collections.list;
-
-import sun.misc.GC;
+package com.runtime.java.collector.list;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.stream.Stream;
 
 /**
  * @author Apache-x | A You Ok
