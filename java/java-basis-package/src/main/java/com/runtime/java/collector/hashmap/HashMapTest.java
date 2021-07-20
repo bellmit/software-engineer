@@ -1,6 +1,8 @@
-package com.runtime.java.collections.hashmap;
+package com.runtime.java.collector.hashmap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
@@ -16,6 +18,8 @@ public class HashMapTest<K, V> {
 
     public static void main(String[] args) {
 
+        new HashMap<>();
+        new HashSet<>();
 
 //        // 填充数据  put
 //        HashEntry<String, String> entry = new HashEntry<>();

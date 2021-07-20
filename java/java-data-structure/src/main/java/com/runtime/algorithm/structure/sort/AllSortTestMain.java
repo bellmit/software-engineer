@@ -42,7 +42,7 @@ public class AllSortTestMain {
         //InsertSort.insertSort(arr2); //插入排序
         //RadixSort.radixSort(arr2); //基数排序/桶排序
         //MergeSort.mergeSort(arr2, 0, arr2.length-1, new int[arr.length ]); //归并排序
-        //BubbleSort.bubbleSort(arr2); 冒泡排序
+        BubbleSort.bubbleSort(arr2); //冒泡排序
         //QuickSort.quickSort(arr2, 0, arr2.length - 1); 快速排序
         //ShellSort.shellSortYd(arr2); //希尔排序 移动法
         //ShellSort.shellSort(arr2); //希尔排序 交换法

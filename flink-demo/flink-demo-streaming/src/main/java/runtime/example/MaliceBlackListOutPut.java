@@ -41,6 +41,7 @@ public class MaliceBlackListOutPut {
     public static void main(String[] args) {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
+
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
         try {

@@ -1,6 +1,5 @@
-package com.runtime.java.collections.list;
+package com.runtime.java.collector.list;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 

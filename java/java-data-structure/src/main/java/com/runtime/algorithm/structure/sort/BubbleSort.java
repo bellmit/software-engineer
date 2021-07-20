@@ -17,9 +17,21 @@ public class BubbleSort {
 
         int temp = 0;
         boolean flag = false;
-        //时间复杂度为 O(n2) 平方阶
-        for (int i = 0; i < arr.length - 1; i++) {
+        //时间复杂度为 O(n2) 平方阶.
 
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] < arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < arr.length - 1; i++) {
 
             for (int j = 0; j < arr.length - 1 - i; j++) {
 
@@ -41,6 +53,5 @@ public class BubbleSort {
 
         System.out.println(Arrays.toString(arr));
     }
-
 
 }

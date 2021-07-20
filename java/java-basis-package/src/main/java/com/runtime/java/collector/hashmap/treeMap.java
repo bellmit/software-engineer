@@ -1,4 +1,4 @@
-package com.runtime.java.collections.hashmap;
+package com.runtime.java.collector.hashmap;
 
 import java.util.Iterator;
 import java.util.Map;

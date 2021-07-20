@@ -45,7 +45,7 @@ public class IntegerTest {
         // 一个 new Integer 跟 一个 int 相比 [== & equals]
         Integer q1 = new Integer(100);
         int q2 = 100;
-        System.out.println(q1 == q2); // true 拆包 比较的是 具体的值  intValue () 返回的是 int
+        System.out.println("q1 == q2" + (q1 == q2)); // true 拆包 比较的是 具体的值  intValue () 返回的是 int
         System.out.println(q1.equals(q2)); // true
 
         // 一个 new Integer 跟 一个 非 new Integer 相比   [== & equals]
@@ -67,9 +67,6 @@ public class IntegerTest {
         Integer c2 = 129;
         System.out.println(c1.equals(c2)); // true 具体值相同
         System.out.println(c1 == c2); // false 引用不同
-
-
-
 
     }
 }
