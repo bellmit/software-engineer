@@ -21,7 +21,7 @@
         <scala.version>2.11</scala.version>
         <flink.version>1.9.1</flink.version>
         <es.version>7.2.0</es.version>
-        <hadoop.version>2.6.0</hadoop.version>
+        <hadoop.version>2.10.1</hadoop.version>
         <mysql.driver.version>8.0.16</mysql.driver.version>
 <!--        <mysql.driver.version>5.1.35</mysql.driver.version>-->
         <hbase.version>1.2.0</hbase.version>
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
-            <version>${hadoop.version}-${cdh.version}</version>
+            <version>${hadoop.version}</version>
         </dependency>
 
         <dependency>
